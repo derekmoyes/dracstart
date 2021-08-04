@@ -1,5 +1,5 @@
 # dracstart
-Easily open downloaded jnlp files from Dell.
+## Easily open downloaded jnlp files from Dell.
 
 usage: dracstart [-h]
 
