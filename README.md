@@ -1,4 +1,4 @@
-# dracstart
+# dracstart.py
 ## Easily open downloaded jnlp files from Dell.
 
 usage: dracstart [-h]
