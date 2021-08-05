@@ -48,7 +48,7 @@ from datetime import datetime
 from time import sleep 
 
 # Adjust these variables for your environment. 
-Debug = 0
+Debug = 1
 DebugString = "==> DEBUG:"
 DownloadsPath = "/Users/dmoyes/Downloads/"
 FileExt = "jnlp"
@@ -72,14 +72,23 @@ if not list_of_files:
   if Debug:
     print("%s Specific %s file not found, checking all files in %s." % (DebugString, FileExt, DownloadsPath))
   list_of_files = glob.glob(DownloadsPath + '*')
-  latest_file = max(list_of_files, key=os.path.getctime)
+  try:
+    latest_file = max(list_of_files, key=os.path.getctime)
+  except ValueError as ve:
+    raise SystemExit("Sorry, I don't see any files in %s." % DownloadsPath)
 else:
-  latest_file = max(list_of_files, key=os.path.getctime)
+  try:
+    latest_file = max(list_of_files, key=os.path.getctime)
+  except ValueError as ve:
+    raise SystemExit("Sorry, I don't see any files in %s." % DownloadsPath)
 if Debug:
   print("%s Found newest file %s." % (DebugString, latest_file))
 
 # Validate that it is a DRAC config file.
-validate = open(latest_file, 'r').readlines()
+try:
+  validate = open(latest_file, 'r').readlines()
+except IOError as err:
+    print("Error: %s" % err)
 matches = [] 
 for word in validate:
   if Snippet in word.lower():
