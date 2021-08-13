@@ -6,7 +6,7 @@ usage:
 dracstart [-h] [-v]
 ```
 
-optional arguments:
+optional arguments:<br>
 &nbsp;&nbsp;-h, --help     show this help message and exit<br>
 &nbsp;&nbsp;-v, --verbose  Print verbose information
 
