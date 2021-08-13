@@ -63,13 +63,18 @@ DeleteAfterSeconds = 15
 verbose = False
 debug   = False
 
-parser = argparse.ArgumentParser(prog='dracstart',
+parser = argparse.ArgumentParser(
+        prog='dracstart',
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog=__doc__)
-parser.add_argument('-v', '--verbose', action='store_true',
-                    help="Print verbose information")
-parser.add_argument('-d', '--debug', action='store_true',
-                    help="Print additional debug information")
+parser.add_argument(
+        '-v', '--verbose',
+        action='store_true',
+        help="Print verbose information")
+parser.add_argument(
+        '-d', '--debug',
+        action='store_true',
+        help="Print additional debug information")
 args = parser.parse_args()
 
 if args.verbose:
@@ -124,7 +129,7 @@ if debug:
 if not matches:
     raise SystemExit("Sorry, the newest file %s doesn't seem to be of %s type."
                      % (latest_file, FileExt))
-  
+
 
 # Rename it to something we can use.
 dt = datetime.now().strftime('%Y%m%d%M%S')
