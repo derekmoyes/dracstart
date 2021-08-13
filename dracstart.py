@@ -74,6 +74,7 @@ parser.add_argument(
         '-d', '--debug',
         action='store_true',
         help="Print additional debug information")
+
 args = parser.parse_args()
 
 if args.verbose:
