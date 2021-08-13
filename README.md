@@ -3,7 +3,7 @@
 
 usage:
 ```
-dracstart [-h] [-v]
+dracstart [-h] [-v] [-d]
 ```
 
 optional arguments:<br>
@@ -27,8 +27,6 @@ Once that's done, simply download a jnlp file into your Downloads folder, then
 
 Tested mostly with iDRAC6 files, as you can upgrade iDRAC7 to allow HTML5 
   console access. I highly recommend you do that, if you're able.
-
-Written for Python 2.7, as that's the default on my Mac.
 
 ---
 Copyright 2021 derek.moyes @ gmail.com 
