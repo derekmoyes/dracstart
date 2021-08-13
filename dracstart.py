@@ -45,7 +45,6 @@ import argparse
 import textwrap 
 import glob
 import os
-import sys
 from datetime import datetime 
 from time import sleep 
 
