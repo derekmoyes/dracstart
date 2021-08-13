@@ -1,11 +1,13 @@
 # dracstart.py
 ## Easily open downloaded jnlp files from Dell.
 
+```
 usage: dracstart [-h] [-v]
+```
 
 optional arguments:
-  -h, --help     show this help message and exit
-  -v, --verbose  Print verbose information
+>  -h, --help     show this help message and exit
+>  -v, --verbose  Print verbose information
 
 Use this script to easily open downloaded jnlp files from Dell. Typically, the 
   file names aren't in a useful format, security settings won't easily allow 
