@@ -54,9 +54,10 @@ DownloadsPath      = "/Users/dmoyes/Downloads/"
 FileExt            = "jnlp"
 Snippet            = "drac"
 JavaRunner         = "/usr/bin/javaws"
-DeleteFileAfterUse = 0
+DeleteFileAfterUse = 1
 DeleteAfterSeconds = 15 
 
+# Setup command-line arguments. 
 verbose = False
 debug   = False
 
@@ -82,6 +83,7 @@ if args.debug == True:
   debug = True
   print("Setting debug to %s." % debug)
 
+# Begin. 
 # Locate the latest FileExt file in DownloadsPath.
 if verbose:
   print("Checking for new %s files in %s." % (FileExt, DownloadsPath))
@@ -104,6 +106,7 @@ else:
 
 if verbose:
   print("Found newest file %s." % (latest_file))
+
 # Validate that it is a DRAC config file.
 try:
   validate = open(latest_file, 'r').readlines()
