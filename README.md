@@ -7,10 +7,8 @@ dracstart [-h] [-v]
 ```
 
 optional arguments:
-
->  -h, --help     show this help message and exit
-
->  -v, --verbose  Print verbose information
+&nbsp;&nbsp;-h, --help     show this help message and exit<br>
+&nbsp;&nbsp;-v, --verbose  Print verbose information
 
 Use this script to easily open downloaded jnlp files from Dell. Typically, the 
   file names aren't in a useful format, security settings won't easily allow 
