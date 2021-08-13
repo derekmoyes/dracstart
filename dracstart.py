@@ -64,12 +64,12 @@ verbose = False
 debug   = False
 
 parser = argparse.ArgumentParser(prog='dracstart',
-    formatter_class=argparse.RawDescriptionHelpFormatter,
-    epilog=__doc__)
+         formatter_class=argparse.RawDescriptionHelpFormatter,
+         epilog=__doc__)
 parser.add_argument('-v', '--verbose', action='store_true',
-    help="Print verbose information")
+                    help="Print verbose information")
 parser.add_argument('-d', '--debug', action='store_true',
-    help="Print additional debug information")
+                    help="Print additional debug information")
 args = parser.parse_args()
 
 if args.verbose:
