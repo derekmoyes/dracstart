@@ -44,6 +44,7 @@ import argparse
 import textwrap
 import glob
 import os
+import pprint
 from datetime import datetime
 from time import sleep
 
@@ -84,18 +85,19 @@ if args.verbose:
 if args.debug:
     debug = True
     print("Setting debug to %s." % debug)
+    pp = pprint.PrettyPrinter(indent=4)
 
 
 # Begin.
 # Locate the latest FileExt file in DownloadsPath.
 if verbose:
-    print("Checking for new %s files in %s." % (FileExt, DownloadsPath))
+    print("Checking for new %s files in %s..." % (FileExt, DownloadsPath))
 
 list_of_files = glob.glob(DownloadsPath + '*' + FileExt)
 
 if not list_of_files:
     if verbose:
-        print("Specific %s file not found, checking all files in %s."
+        print("Specific %s file not found, checking all files in %s..."
               % (FileExt, DownloadsPath))
     list_of_files = glob.glob(DownloadsPath + '*')
     try:
@@ -109,7 +111,7 @@ else:
         raise SystemExit("Sorry, I don't see any files in %s." % DownloadsPath)
 
 if verbose:
-    print("Found newest file %s." % (latest_file))
+    print("Found newest file %s..." % (latest_file))
 
 
 # Validate that it is a DRAC config file.
@@ -127,24 +129,25 @@ for word in validate:
         matches.append(word)
 if debug:
     print("%s List of read lines matching %s: " % (DebugString, Snippet))
-    print("%s %s" % (DebugString, matches))
+    pp.pprint(matches)
+    print("%s" % DebugString)
 
 if not matches:
     raise SystemExit("Sorry, the newest file %s doesn't seem to be of %s type."
                      % (latest_file, FileExt))
 
 
-# Rename it to something we can use.
+# Rename it to something nicer.
 dt = datetime.now().strftime('%Y%m%d%M%S')
 new_file_name = DownloadsPath + Snippet + dt + "." + FileExt
 os.rename(latest_file, new_file_name)
 if verbose:
-    print("Renamed to: %s" % (new_file_name))
+    print("Renamed to %s..." % (new_file_name))
 
 
 # Run it with JavaRunner.
 builtcommand = JavaRunner + " " + new_file_name
-print("Starting: %s" % builtcommand)
+print("Starting %s..." % builtcommand)
 os.system(builtcommand)
 
 
