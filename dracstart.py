@@ -49,16 +49,16 @@ from datetime import datetime
 from time import sleep 
 
 # Adjust these variables for your environment. 
-Debug = 1
-DebugString = "==> DEBUG:"
-DownloadsPath = "/Users/dmoyes/Downloads/"
-FileExt = "jnlp"
-Snippet = "drac"
-JavaRunner = "/usr/bin/javaws"
+DebugString        = "==> DEBUG:"
+DownloadsPath      = "/Users/dmoyes/Downloads/"
+FileExt            = "jnlp"
+Snippet            = "drac"
+JavaRunner         = "/usr/bin/javaws"
 DeleteFileAfterUse = 0
 DeleteAfterSeconds = 15 
 
 verbose = False
+debug   = False
 
 parser = argparse.ArgumentParser(
     prog='dracstart', 
@@ -68,11 +68,19 @@ parser.add_argument(
     '-v', '--verbose',	
     action='store_true',	
     help="Print verbose information")
+parser.add_argument(
+    '-d', '--debug',
+    action='store_true',
+    help="Print additional debug information")
 args = parser.parse_args()
 
 if args.verbose == True:
   verbose = True
   print("Setting verbose to %s." % verbose)
+
+if args.debug == True:
+  debug = True
+  print("Setting debug to %s." % debug)
 
 # Locate the latest FileExt file in DownloadsPath.
 if verbose:
@@ -106,7 +114,7 @@ matches = []
 for word in validate:
   if Snippet in word.lower():
     matches.append(word)
-if Debug:
+if debug:
   print("%s List of read lines matching %s: " % (DebugString, Snippet))
   print("%s %s" % (DebugString, matches))
 
