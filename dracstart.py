@@ -54,23 +54,34 @@ DownloadsPath = "/Users/dmoyes/Downloads/"
 FileExt = "jnlp"
 Snippet = "drac"
 JavaRunner = "/usr/bin/javaws"
-DeleteFileAfterUse = 1
+DeleteFileAfterUse = 0
 DeleteAfterSeconds = 15 
 
-# Help 
+verbose = False
+
 parser = argparse.ArgumentParser(
     prog='dracstart', 
     formatter_class=argparse.RawDescriptionHelpFormatter, 
     epilog=__doc__)
+parser.add_argument(
+    '-v', '--verbose',	
+    action='store_true',	
+    help="Print verbose information")
 args = parser.parse_args()
 
+if args.verbose == True:
+  verbose = True
+  print("Setting verbose to %s." % verbose)
+
 # Locate the latest FileExt file in DownloadsPath.
-if Debug:
-  print("%s Checking for new %s files in %s." % (DebugString, FileExt, DownloadsPath))
+if verbose:
+  print("Checking for new %s files in %s." % (FileExt, DownloadsPath))
+
 list_of_files = glob.glob(DownloadsPath + '*' + FileExt) 
+
 if not list_of_files:
-  if Debug:
-    print("%s Specific %s file not found, checking all files in %s." % (DebugString, FileExt, DownloadsPath))
+  if verbose:
+    print("Specific %s file not found, checking all files in %s." % (FileExt, DownloadsPath))
   list_of_files = glob.glob(DownloadsPath + '*')
   try:
     latest_file = max(list_of_files, key=os.path.getctime)
@@ -81,14 +92,15 @@ else:
     latest_file = max(list_of_files, key=os.path.getctime)
   except ValueError as ve:
     raise SystemExit("Sorry, I don't see any files in %s." % DownloadsPath)
-if Debug:
-  print("%s Found newest file %s." % (DebugString, latest_file))
 
+if verbose:
+  print("Found newest file %s." % (latest_file))
 # Validate that it is a DRAC config file.
 try:
   validate = open(latest_file, 'r').readlines()
 except IOError as err:
     print("Error: %s" % err)
+
 matches = [] 
 for word in validate:
   if Snippet in word.lower():
@@ -104,8 +116,8 @@ if not matches:
 dt = datetime.now().strftime('%Y%m%d%M%S')
 new_file_name = DownloadsPath + Snippet + dt + "." + FileExt
 os.rename(latest_file, new_file_name)
-if Debug:
-  print("%s Renamed to: %s" % (DebugString, new_file_name))
+if verbose:
+  print("Renamed to: %s" % (new_file_name))
 
 # Run it with JavaRunner. 
 builtcommand = JavaRunner + " " + new_file_name
