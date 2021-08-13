@@ -29,7 +29,7 @@ use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies
 of the Software, and to permit persons to whom the Software is furnished to do
 so, subject to the following conditions:
 
-The above copyright notice and this permission notice shall be included in all 
+The above copyright notice and this permission notice shall be included in all
 copies or substantial portions of the Software.
 
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
@@ -64,8 +64,8 @@ verbose = False
 debug   = False
 
 parser = argparse.ArgumentParser(prog='dracstart',
-         formatter_class=argparse.RawDescriptionHelpFormatter,
-         epilog=__doc__)
+        formatter_class=argparse.RawDescriptionHelpFormatter,
+        epilog=__doc__)
 parser.add_argument('-v', '--verbose', action='store_true',
                     help="Print verbose information")
 parser.add_argument('-d', '--debug', action='store_true',
