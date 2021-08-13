@@ -96,7 +96,7 @@ list_of_files = glob.glob(DownloadsPath + '*' + FileExt)
 
 if not list_of_files:
     if verbose:
-        print("Specific %s file not found, checking all files in %s." 
+        print("Specific %s file not found, checking all files in %s."
               % (FileExt, DownloadsPath))
     list_of_files = glob.glob(DownloadsPath + '*')
     try:
