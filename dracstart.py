@@ -27,7 +27,7 @@ Tested mostly with iDRAC6 files, as you can upgrade iDRAC7 to allow HTML5
   console access. I highly recommend you do that, if you're able.
 
 ---
-Copyright 2021 derek.moyes @ gmail.com
+Copyright 2024 derek.moyes @ gmail.com
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of
 this software and associated documentation files (the "Software"), to deal in

@@ -2,7 +2,7 @@
 ## Easily open downloaded jnlp files from Dell.
 
 usage:
-```
+``` shell
 dracstart [-h] [-v] [-d]
 ```
 
@@ -28,17 +28,21 @@ Once that's done, simply download a jnlp file into your Downloads folder, then
 In most cases, you'll have to also add the DRAC's IP to your Java Exceptions
   file, as well.
 
-  On my Mac, I find that here:
-    /Users/$USER/Library/Application Support/Oracle/Java/Deployment/security/exception.sites
+On my Mac, I find that here:
+``` shell
+/Users/$USER/Library/Application Support/Oracle/Java/Deployment/security/exception.sites
+```
 
-  Simply add each IP on a seperate line, following this format:
-    https://xx.xx.xx.xx/
+Simply add each IP on a seperate line, following this format:
+```
+https://xx.xx.xx.xx/
+```
 
 Tested mostly with iDRAC6 files, as you can upgrade iDRAC7 to allow HTML5 
   console access. I highly recommend you do that, if you're able.
 
 ---
-Copyright 2021 derek.moyes @ gmail.com 
+Copyright 2024 derek.moyes @ gmail.com 
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of 
 this software and associated documentation files (the "Software"), to deal in 
