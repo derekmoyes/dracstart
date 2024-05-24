@@ -25,6 +25,15 @@ Once that's done, simply download a jnlp file into your Downloads folder, then
   run this script. You don't need to specify any parameters, as long as the 
   jnlp is the newest file in your Downloads folder, it'll find it.
 
+In most cases, you'll have to also add the DRAC's IP to your Java Exceptions
+  file, as well.
+
+  On my Mac, I find that here:
+    /Users/$USER/Library/Application Support/Oracle/Java/Deployment/security/exception.sites
+
+  Simply add each IP on a seperate line, following this format:
+    https://xx.xx.xx.xx/
+
 Tested mostly with iDRAC6 files, as you can upgrade iDRAC7 to allow HTML5 
   console access. I highly recommend you do that, if you're able.
 
